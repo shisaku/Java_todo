@@ -11,7 +11,7 @@
 <body>
     <div class="form-container">
         <h1>新規投稿</h1>
-        <form th:action="@{/registerTodo}" method="post">
+        <form th:action="@{/todo/new/register}" method="post">
             <div class="form-group">
                 <label for="post-content">投稿内容</label>
                 <textarea id="post-content" name="post-content" placeholder="投稿内容を入力してください..." maxlength="100"></textarea>
