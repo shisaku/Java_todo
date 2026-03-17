@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投稿フォーム</title>
+<!--    <link rel="stylesheet" href="/css/new_post.css" type="text/css">-->
+<!--    <script src="/js/new_post.js"></script>-->
+<html xmlns:th="http://www.thymeleaf.org">
+</head>
+<body>
+    <div class="form-container">
+        <h1>新規投稿</h1>
+        <form th:action="@{/registerTodo}" method="post">
+            <div class="form-group">
+                <label for="post-content">投稿内容</label>
+                <textarea id="post-content" name="post-content" placeholder="投稿内容を入力してください..." maxlength="100"></textarea>
+            </div>
+
+            <div class="button-group">
+                <input type="submit" value="投稿する" class="btn btn-primary">
+                <input type="button" id="back-button" value="戻る" class="btn btn-secondary">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
