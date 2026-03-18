@@ -5,11 +5,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.service.TodoService;
+
 import ch.qos.logback.core.model.Model;
 
 
 @Controller
 public class TodoController {
+    private final TodoService todoService;
+
+    /**
+     * TodoControllerのコンストラクタ。
+     *
+     * @param todoService todoに関するビジネスロジックを提供するサービスクラス
+     */
+    public TodoController(TodoService todoService) {
+        this.todoService = todoService;
+    }
     /**
      * 投稿一覧画面を表示する
      * @param model ビューに渡すモデル
