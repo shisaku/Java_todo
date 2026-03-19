@@ -27,7 +27,7 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("com.h2database:h2")
+	runtimeOnly("org.postgresql:postgresql")
 }
 
 tasks.withType<Test> {

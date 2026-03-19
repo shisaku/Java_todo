@@ -2,8 +2,8 @@ package com.example.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.Entity.UserEntity;
+import com.example.demo.Entity.TodoEntity;
 
-public interface TodoRepository extends JpaRepository<UserEntity, Long> {
+public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	    // 何も書かなくていい
 	}

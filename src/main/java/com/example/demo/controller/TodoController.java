@@ -2,12 +2,11 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Entity.TodoEntity;
 import com.example.demo.service.TodoService;
-
-import ch.qos.logback.core.model.Model;
 
 
 @Controller
@@ -48,9 +47,9 @@ public class TodoController {
      * @return ビュー名（list.html）
      */
     @PostMapping("/todo/new/register")
-    public String registerTodo(@RequestParam String name, Model model) {
-    	//TODO:XSS対策する（エスケープ）
-        return "hello";
+    public String registerTodo(@ModelAttribute TodoEntity todoEntity) {
+    	todoService.registerTodo(todoEntity);
+    	return "redirect:/todo/display/list";  // 登録後は一覧にリダイレクト
     }
 }
 
