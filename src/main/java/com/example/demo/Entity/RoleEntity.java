@@ -1,32 +1,30 @@
 package com.example.demo.Entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TODO_T")
-public class TodoEntity{
+@Table(name = "ROLE_M")
 
-    @Id
+public class RoleEntity {
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String content;
+    @Column(nullable = false, unique = true)
+    private String name;  // "ADMIN" / "USER"
 
-    @Column(nullable = false)
-    private boolean done;
+    @OneToMany(mappedBy = "role")
+    private List<UserEntity> users;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
     private LocalDateTime createdAt;
     private String createdBy;
     private LocalDateTime updatedAt;
