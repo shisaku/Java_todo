@@ -1,12 +1,14 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.Entity.TodoEntity;
 import com.example.demo.service.TodoService;
+
 
 
 @Controller
@@ -40,6 +42,14 @@ public class TodoController {
 		return  "todo/register";
 	}
     /**
+     * システムエラー画面を表示する
+     * @return ビュー名（systemError.html）
+     */
+	@GetMapping("/todo/display/systemError")
+	public String displayInitialSystemErrorScreen() {
+		return  "todo/systemError";
+	}
+    /**
      * 投稿画面入力内容を受け取り、DBに登録する。
      *
      * @param name  フォームから送信された名前
@@ -47,9 +57,14 @@ public class TodoController {
      * @return ビュー名（list.html）
      */
     @PostMapping("/todo/new/register")
-    public String registerTodo(@ModelAttribute TodoEntity todoEntity) {
-    	todoService.registerTodo(todoEntity);
-    	return "redirect:/todo/display/list";  // 登録後は一覧にリダイレクト
+    public String registerTodo(@ModelAttribute TodoEntity todoEntity, Model model) {
+    	try {
+    		todoService.registerTodo(todoEntity);
+    		return "redirect:/todo/display/list";
+    	}catch(RuntimeException e) {
+    		 model.addAttribute("errorMessage", e.getMessage());
+    		return  "redirect:/todo/display/systemError";
+    	}
     }
 }
 
