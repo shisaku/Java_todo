@@ -20,16 +20,25 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-	implementation ("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtimeOnly("org.postgresql:postgresql")
+    // Spring MVC によるWebアプリ開発の基盤
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    // 開発時のホットリロード
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    // JUnit などテスト用ライブラリ一式
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    // JUnit 5 のテストランナー（テスト実行エンジン）※テスト実行時のみ
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // docker-compose.ymlを自動で立ち上げる
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+    // Thymeleaf
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    // Spring Data JPA
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // PostgreSQL の JDBCドライバ
+    runtimeOnly("org.postgresql:postgresql")
+    // バリデーション
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
-
 tasks.withType<Test> {
 	useJUnitPlatform()
 }

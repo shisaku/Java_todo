@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.TodoEntity;
@@ -25,8 +24,8 @@ public class TodoService {
      */
     public void registerTodo(TodoEntity todoEntity) throws RuntimeException{
     	try {
-//    		todoRepository.save(todoEntity);
-    		throw new DataAccessResourceFailureException("テスト用エラー");
+    		todoRepository.save(todoEntity);
+//    		throw new DataAccessResourceFailureException("テスト用エラー");
     	}catch(DataAccessException e) {
     		throw new RuntimeException("登録に失敗しました", e);
     	}

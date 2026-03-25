@@ -11,10 +11,17 @@
 <body>
     <div class="form-container">
         <h1>新規投稿</h1>
+		<!-- エラー表示 -->
+		<div th:if="${#fields.hasAnyErrors()}" style="color:red; border:1px solid red; padding:10px; margin-bottom:15px;">
+		    <p>入力内容にエラーがあります。</p>
+		    <ul>
+		        <li th:each="err : ${#fields.allErrors()}" th:text="${err}"></li>
+		    </ul>
+		</div>
         <form th:action="@{/todo/new/register}" method="post">
             <div class="form-group">
                 <label for="post-content">投稿内容</label>
-                <textarea id="post-content" name="acontent" placeholder="投稿内容を入力してください..." maxlength="100"></textarea>
+                <textarea id="post-content" name="content" placeholder="投稿内容を入力してください..." maxlength="100"></textarea>
             </div>
 
             <div class="button-group">
