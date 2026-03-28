@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,7 +43,8 @@ public class TodoController {
      * @return ビュー名（registerTodo.html）
      */
 	@GetMapping("/todo/display/register")
-	public String displayInitialTodoRegisterScreen() {
+	public String displayInitialTodoRegisterScreen(Model model) {
+		model.addAttribute("todoValidation",new TodoValidation());
 		return  "todo/register";
 	}
     /**
@@ -63,7 +65,7 @@ public class TodoController {
      *         システムエラー時はシステムエラー画面へリダイレクト
      */
     @PostMapping("/todo/new/register")
-    public String registerTodo(@Valid @ModelAttribute TodoValidation todoValidation,BindingResult result,@ModelAttribute TodoEntity todoEntity,RedirectAttributes redirectAttrs) {
+    public String registerTodo(@Valid @ModelAttribute TodoValidation todoValidation,BindingResult result,@ModelAttribute TodoEntity todoEntity,RedirectAttributes redirectAttrs,Model model) {
         if (result.hasErrors()) {
             return "todo/register"; // エラーがあれば入力画面に戻る
         }

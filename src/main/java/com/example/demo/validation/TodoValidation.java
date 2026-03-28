@@ -4,7 +4,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class TodoValidation {
-	@NotBlank(message = "タイトルは必須です")
-	@Size(max = 255, message = "255文字以内で入力してください")
+	@NotBlank
+	@Size(max = 255)
 	private String content;
+    // getter
+    public String getContent() {
+        return content;
+    }
+
+    // setter
+    public void setContent(String content) {
+        this.content = content;
+    }
 }
