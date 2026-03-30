@@ -1,0 +1,39 @@
+2026-03-30 22:06:46 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 開始
+2026-03-30 22:06:46 DEBUG org.hibernate.SQL - insert into todo_t (content,created_at,created_by,done,updated_at,updated_by,user_id) values (?,?,?,?,?,?,?)
+2026-03-30 22:06:46 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 終了
+2026-03-30 22:08:11 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:08:11 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:08:12 INFO  com.example.demo.Application - Started Application in 1.057 seconds (process running for 1970.907)
+2026-03-30 22:08:18 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 開始
+2026-03-30 22:08:18 DEBUG org.hibernate.SQL - insert into todo_t (content,created_at,created_by,done,updated_at,updated_by,user_id) values (?,?,?,?,?,?,?)
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [あ]
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:TIMESTAMP) <- [2026-03-30T22:08:18.068386900]
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [admin]
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BOOLEAN) <- [false]
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:TIMESTAMP) <- [2026-03-30T22:08:18.068386900]
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [admin]
+2026-03-30 22:08:18 TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2026-03-30 22:08:18 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 終了
+2026-03-30 22:11:12 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:11:12 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:11:13 INFO  com.example.demo.Application - Started Application in 1.09 seconds (process running for 2151.397)
+2026-03-30 22:11:16 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:11:16 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:11:17 INFO  com.example.demo.Application - Started Application in 0.986 seconds (process running for 2155.936)
+2026-03-30 22:11:22 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 開始
+2026-03-30 22:11:22 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 終了
+2026-03-30 22:11:40 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:11:40 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:11:41 INFO  com.example.demo.Application - Started Application in 0.918 seconds (process running for 2179.698)
+2026-03-30 22:11:46 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 開始
+2026-03-30 22:11:46 ERROR com.example.demo.service.TodoService - DB登録失敗: テスト用エラー
+2026-03-30 22:11:46 INFO  com.example.demo.controller.TodoController - 新規投稿DB登録処理 終了
+2026-03-30 22:11:58 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:11:58 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:11:59 INFO  com.example.demo.Application - Started Application in 0.964 seconds (process running for 2197.44)
+2026-03-30 22:12:01 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:12:01 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:12:02 INFO  com.example.demo.Application - Started Application in 0.981 seconds (process running for 2200.946)
+2026-03-30 22:12:04 INFO  com.example.demo.Application - Starting Application using Java 17.0.17 with PID 17152 (C:\pleiades\2025-12\workspace\spring\bin\main started by shimi in C:\pleiades\2025-12\workspace\spring)
+2026-03-30 22:12:04 INFO  com.example.demo.Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 22:12:05 INFO  com.example.demo.Application - Started Application in 0.918 seconds (process running for 2203.37)

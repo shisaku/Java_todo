@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import jakarta.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,10 +17,10 @@ import com.example.demo.service.TodoService;
 import com.example.demo.validation.TodoValidation;
 
 
-
 @Controller
 public class TodoController {
     private final TodoService todoService;
+    private static final Logger log = LoggerFactory.getLogger(TodoController.class);
 
     /**
      * TodoControllerのコンストラクタ。
@@ -66,7 +68,11 @@ public class TodoController {
      */
     @PostMapping("/todo/new/register")
     public String registerTodo(@Valid @ModelAttribute TodoValidation todoValidation,BindingResult result,@ModelAttribute TodoEntity todoEntity,RedirectAttributes redirectAttrs,Model model) {
-        if (result.hasErrors()) {
+        // XSS対策でエスケープする
+    	log.info("新規投稿DB登録処理 開始");
+    	if (result.hasErrors()) {
+    		log.warn("新規投稿DB登録処理 バリデーションエラー");
+    		log.info("新規投稿DB登録処理 終了");
             return "todo/register"; // エラーがあれば入力画面に戻る
         }
     	try {
@@ -75,6 +81,8 @@ public class TodoController {
     	}catch(RuntimeException e) {
     		redirectAttrs.addFlashAttribute("errorMessage", e.getMessage());
     		return  "redirect:/todo/display/systemError";
+    	}finally {
+    		log.info("新規投稿DB登録処理 終了");
     	}
     }
 }

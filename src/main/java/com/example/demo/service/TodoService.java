@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.time.LocalDateTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import com.example.demo.repository.TodoRepository;
 @Service
 public class TodoService {
 	private final TodoRepository todoRepository;
+	private static final Logger log = LoggerFactory.getLogger(TodoService.class);
     /**
      * TodoServiceのコンストラクタ。
      *
@@ -39,6 +42,7 @@ public class TodoService {
     		todoRepository.save(todoEntity);
 //    		throw new DataAccessResourceFailureException("テスト用エラー");
     	}catch(DataAccessException e) {
+    		log.error("DB登録失敗: {}", e.getMessage());
     		throw new RuntimeException("登録に失敗しました", e);
     	}
     }

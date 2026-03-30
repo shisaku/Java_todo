@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 書き込み対象のログファイル -->
+    <file>logs/app.log</file>
+
+
+    <!--===============================
+      ローテーションのルール設定
+    ================================-->
+    <!-- 日付またはサイズで切り替える -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!-- ファイル名 -->
+      <fileNamePattern>logs/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+      <!-- ファイルサイズ上限 -->
+      <maxFileSize>10MB</maxFileSize>
+      <!-- 保存期間 -->
+      <maxHistory>30</maxHistory>
+      <!-- トータルログファイルサイズ上限 -->
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+
+    <!--===============================
+      ログ出力内容設定
+    ================================-->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--===============================
+    コンソール出力設定
+  ================================-->
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--===============================
+    ログ出力対象フォルダ設定
+  ================================-->
+   <logger name="com.example.demo" level="INFO" additivity="false">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="FILE"/>
+  </logger>
+  <!--===============================
+    SQLログをFILE+CONSOLEに出す
+  ================================-->
+  <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="FILE"/>
+  </logger>
+  <!--===============================
+    SQLのバインド変数（?の中身）も出す
+  ================================-->
+  <logger name="org.hibernate.orm.jdbc.bind" level="TRACE" additivity="false">
+    <appender-ref ref="CONSOLE"/>
+    <appender-ref ref="FILE"/>
+  </logger>
+  <!--===============================
+    loggerで指定していない全てのクラスのログ
+  ================================-->
+  <!-- FILE・CONSOLEに対して、INFO以上のログを出力させる -->
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</configuration>
