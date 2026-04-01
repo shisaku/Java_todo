@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,4 +47,33 @@ public class TodoService {
     		throw new RuntimeException("登録に失敗しました", e);
     	}
     }
+    /**
+     * 投稿内容一覧を取得する
+      * @return 全TodoエンティティのList。0件の場合は空のListを返す。
+     * @throws RuntimeException DB登録に失敗した場合
+     */
+    public List<TodoEntity> getTodolistAll()throws RuntimeException{
+    	try {
+    		List<TodoEntity> todos = todoRepository.findAll();
+    		return todos;
+       	}catch(DataAccessException e) {
+    		log.error("DB取得失敗: {}", e.getMessage());
+    		throw new RuntimeException("取得に失敗しました", e);
+    	}
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

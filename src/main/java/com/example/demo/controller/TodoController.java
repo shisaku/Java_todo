@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import jakarta.validation.Valid;
 
 import org.slf4j.Logger;
@@ -36,17 +38,28 @@ public class TodoController {
      * @return ビュー名（list.html）
      */
 	@GetMapping("/todo/display/list")
-	public String displayInitialTodoListScreen() {
+	public String displayInitialTodoListScreen(Model model,RedirectAttributes redirectAttrs) {
 		// TODO:投稿一覧の情報をViewに渡す。
-		return "todo/list";
+		try {
+			log.info("投稿一覧表示処理 開始");
+			List<TodoEntity> todos = todoService.getTodolistAll();
+			model.addAttribute("todos", todos);
+			return "todo/list";
+		}catch(RuntimeException e) {
+    		redirectAttrs.addFlashAttribute("errorMessage", e.getMessage());
+    		return  "redirect:/todo/display/systemError";
+    	}finally {
+    		log.info("投稿一覧表示処理 終了");
+    	}
 	}
     /**
      * 投稿画面を表示する
      * @return ビュー名（registerTodo.html）
+     *         システムエラー時はシステムエラー画面へリダイレクト
      */
 	@GetMapping("/todo/display/register")
 	public String displayInitialTodoRegisterScreen(Model model) {
-		model.addAttribute("todoValidation",new TodoValidation());
+			model.addAttribute("todoValidation",new TodoValidation());
 		return  "todo/register";
 	}
     /**
@@ -68,7 +81,7 @@ public class TodoController {
      */
     @PostMapping("/todo/new/register")
     public String registerTodo(@Valid @ModelAttribute TodoValidation todoValidation,BindingResult result,@ModelAttribute TodoEntity todoEntity,RedirectAttributes redirectAttrs,Model model) {
-        // XSS対策でエスケープする
+        // th:textとすると自動的にエスケープしてくれる
     	log.info("新規投稿DB登録処理 開始");
     	if (result.hasErrors()) {
     		log.warn("新規投稿DB登録処理 バリデーションエラー");
